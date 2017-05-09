@@ -7,23 +7,21 @@ if exists("b:current_syntax")
   finish
 endif
 
-syn keyword basicLanguageKeywords def fun 
+syn keyword basicLanguageKeywords def fun type
 syn keyword basicLanguageKeywords concat filter
-syn keyword importKeywords import module as 
+syn keyword importKeywords import module as
+
+syn keyword primitiveTypes Integer Double Boolean Byte Text
 
 syn match nmlOperator "="
 syn match nmlOperator "|"
-"syn match nmlOperator "{"
-"syn match nmlOperator "}"
-
-syn match nmlType "<[A-Z][A-Za-z_0-9]*>"
-
-"syn region configBlock start="{" end="}" fold transparent contains=strings
-
-syn keyword nmlTodo contained TODO FIXME NOTE
-syn match singleLineComment "--.*$" contains=nmlTodo
 
 syn match nmlString '"[^"]*"'
+syn match nmlType "<[A-Za-z_0-9\[\]\(\)\{\} :]*>"
+
+syn keyword nmlTodo contained TODO FIXME NOTE
+syn match singleLineComment "//.*$" contains=nmlTodo
+
 syn region multiLineComment start="/\*" end="\*/" contains=nmlTodo
 syn match nmlModule "\<[A-Z][A-Za-z0-9_]*"
 
@@ -34,6 +32,7 @@ hi def link singleLineComment Comment
 hi def link multiLineComment Comment
 hi def link nmlString Constant
 hi def link nmlType Type
+hi def link primitiveTypes Type
 hi def link nmlModule Identifier
 hi def link basicLanguageKeywords Statement
 hi def link importKeywords Type
